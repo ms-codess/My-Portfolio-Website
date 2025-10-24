@@ -4,6 +4,7 @@ import { PlaceHolderImages } from "./placeholder-images";
 export const NAV_LINKS = [
   { href: '#projects', label: 'Projects' },
   { href: '#experience', label: 'Experience' },
+  { href: '#education', label: 'Education' },
   { href: '#skills', label: 'Skills' },
   { href: '#contact', label: 'Contact' },
 ];
@@ -41,11 +42,14 @@ export const EXPERIENCE = [
       role: 'Frontend Developer',
       company: 'Creative Solutions LLC',
       description: 'Focused on creating responsive and user-friendly interfaces with React and Tailwind CSS. Worked closely with designers to translate mockups into functional components.'
-    },
+    }
+  ];
+
+  export const EDUCATION = [
     {
       period: '2018 - 2021',
-      role: 'Bachelor of Science in Computer Science',
-      company: 'University of Technology',
+      degree: 'Bachelor of Science in Computer Science',
+      institution: 'University of Technology',
       description: 'Graduated with honors, focusing on software engineering, data structures, and algorithms. Completed a final year project on machine learning applications.'
     }
   ];

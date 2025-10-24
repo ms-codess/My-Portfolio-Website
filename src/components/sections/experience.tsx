@@ -1,5 +1,5 @@
 import { EXPERIENCE } from '@/lib/data';
-import { Briefcase, GraduationCap } from 'lucide-react';
+import { Briefcase } from 'lucide-react';
 
 const ExperienceSection = () => {
   return (
@@ -8,7 +8,7 @@ const ExperienceSection = () => {
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">My Journey</h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            A timeline of my professional experience and education.
+            A timeline of my professional experience.
           </p>
         </div>
         <div className="relative mt-12">
@@ -19,7 +19,7 @@ const ExperienceSection = () => {
           <div className="space-y-12">
             {EXPERIENCE.map((item, index) => {
               const isLeft = index % 2 === 0;
-              const Icon = item.role.toLowerCase().includes('bachelor') ? GraduationCap : Briefcase;
+              const Icon = Briefcase;
               return (
                 <div key={index} className="relative flex items-center">
                   <div className={`w-1/2 ${isLeft ? 'pr-8 text-right' : 'pl-8'}`}>
