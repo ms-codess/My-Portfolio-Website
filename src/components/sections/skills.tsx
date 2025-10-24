@@ -3,15 +3,6 @@
 import { SKILLS } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, CartesianGrid } from 'recharts';
-import { ChartTooltipContent, ChartContainer, type ChartConfig } from '@/components/ui/chart';
-
-const chartConfig = {
-  proficiency: {
-    label: "Proficiency",
-    color: "hsl(var(--primary))",
-  },
-} satisfies ChartConfig
 
 const SkillsSection = () => {
   return (
@@ -24,55 +15,23 @@ const SkillsSection = () => {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-2">
-          <Card className="fade-in-up">
+        <div className="mt-12 flex justify-center">
+          <Card className="fade-in-up w-full max-w-4xl">
             <CardHeader>
               <CardTitle>Core Technologies</CardTitle>
               <CardDescription>A list of my most-used technologies.</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap justify-center gap-3">
                 {SKILLS.map((skill) => (
-                  <Badge key={skill.name} variant="default" className="text-md px-4 py-2 cursor-pointer transition-transform hover:scale-110 hover:shadow-neon-accent">
+                  <Badge 
+                    key={skill.name} 
+                    variant="default" 
+                    className="text-md cursor-pointer px-4 py-2 transition-transform duration-300 ease-in-out hover:scale-110 hover:shadow-neon-accent"
+                  >
                     {skill.name}
                   </Badge>
                 ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="fade-in-up" style={{animationDelay: '200ms'}}>
-            <CardHeader>
-              <CardTitle>Proficiency Levels</CardTitle>
-              <CardDescription>A visual representation of my confidence in each tool.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="h-80 w-full">
-                <ChartContainer config={chartConfig} className="h-full w-full">
-                    <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={SKILLS} layout="vertical" margin={{ left: 10 }}>
-                        <YAxis
-                        dataKey="name"
-                        type="category"
-                        tickLine={false}
-                        axisLine={false}
-                        tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
-                        width={80}
-                        />
-                        <XAxis type="number" hide />
-                        <CartesianGrid horizontal={false} />
-                        <Tooltip
-                            cursor={{ fill: 'hsl(var(--muted))' }}
-                            content={<ChartTooltipContent indicator="dot" />}
-                        />
-                        <Bar
-                        dataKey="proficiency"
-                        radius={[0, 4, 4, 0]}
-                        className="fill-primary"
-                        />
-                    </BarChart>
-                    </ResponsiveContainer>
-                </ChartContainer>
               </div>
             </CardContent>
           </Card>
