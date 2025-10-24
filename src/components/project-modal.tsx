@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Github, Link as LinkIcon, BarChart } from 'lucide-react';
+import { Github, Link as LinkIcon } from 'lucide-react';
 import type { Project } from '@/lib/data';
 
 type ProjectModalProps = {
@@ -50,20 +50,6 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                 ))}
                 </div>
             </div>
-
-            {project.metrics && (
-                <div>
-                    <h4 className="font-semibold mb-2">Key Metrics</h4>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        {Object.entries(project.metrics).map(([key, value]) => (
-                            <div key={key} className="bg-muted/50 p-3 rounded-md">
-                                <p className="text-sm text-muted-foreground">{key}</p>
-                                <p className="text-lg font-bold">{value}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            )}
 
             <div className="flex gap-4">
             {project.liveUrl && project.liveUrl !== '#' && (

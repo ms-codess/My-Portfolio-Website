@@ -67,6 +67,7 @@ const HeroSection = () => {
 
 
       <div className="container relative z-10 mx-auto flex max-w-7xl flex-col items-center text-center px-4">
+        <h2 className="text-2xl font-bold tracking-tight text-accent sm:text-3xl md:text-4xl">Meyssa Smirani</h2>
         <Typewriter text="Digital Craftsman & Code Artisan" />
         <p className="mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl">
           I build beautiful, scalable, and user-friendly web applications that solve real-world problems.

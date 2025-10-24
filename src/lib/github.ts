@@ -66,11 +66,6 @@ export async function getGithubProjects(username: string): Promise<{ projects: P
                     field: getPrimaryField(repo.topics || []),
                     liveUrl: repo.homepage || '#',
                     githubUrl: repo.html_url,
-                    metrics: {
-                        'Stars': repo.stargazers_count.toString(),
-                        'Forks': repo.forks_count.toString(),
-                        'Issues': repo.open_issues_count.toString(),
-                    },
                 };
         });
 

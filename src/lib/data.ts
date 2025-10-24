@@ -103,7 +103,6 @@ export const EXPERIENCE = [
     field: string;
     liveUrl: string;
     githubUrl: string;
-    metrics?: Record<string, string>;
 };
 
 // This will be populated by the GitHub fetch
