@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { PROJECTS, ALL_TAGS } from '@/lib/data';
+import { PROJECTS, ALL_FIELDS } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import ProjectCard from '@/components/project-card';
 import ProjectModal from '@/components/project-modal';
@@ -13,7 +13,7 @@ const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
 
   const filteredProjects =
-    filter === 'All' ? PROJECTS : PROJECTS.filter((p) => p.tags.includes(filter));
+    filter === 'All' ? PROJECTS : PROJECTS.filter((p) => p.field === filter);
 
   return (
     <section id="projects">
@@ -33,14 +33,14 @@ const ProjectsSection = () => {
           >
             All
           </Button>
-          {ALL_TAGS.map((tag) => (
+          {ALL_FIELDS.map((field) => (
             <Button
-              key={tag}
-              variant={filter === tag ? 'default' : 'outline'}
-              onClick={() => setFilter(tag)}
+              key={field}
+              variant={filter === field ? 'default' : 'outline'}
+              onClick={() => setFilter(field)}
               className="rounded-full"
             >
-              {tag}
+              {field}
             </Button>
           ))}
         </div>
