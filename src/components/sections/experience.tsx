@@ -1,4 +1,5 @@
 import { EXPERIENCE } from '@/lib/data';
+import { Badge } from '@/components/ui/badge';
 
 const ExperienceSection = () => {
   return (
@@ -21,20 +22,26 @@ const ExperienceSection = () => {
               const Icon = item.logo;
               return (
                 <div key={index} className="relative flex items-start md:items-center">
-                  {/* Timeline Content - Left */}
                   <div
-                    className={`w-full md:w-1/2 ${isLeft ? 'pr-0 md:pr-8' : 'pr-0 md:pl-8'}`}
+                    className={`w-full md:w-1/2 ${isLeft ? 'pr-0 md:pr-8 text-left md:text-right' : 'pl-0 md:pl-8'}`}
                   >
                     <div className={`flex w-full ${isLeft ? 'justify-start md:justify-end' : 'justify-start'}`}>
-                        <div className={`relative ml-10 md:ml-0 fade-in-up w-full max-w-md rounded-lg bg-card p-6 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/20 ${isLeft ? 'text-left md:text-right' : 'text-left'}`}>
+                        <div className={`relative ml-10 md:ml-0 fade-in-up w-full max-w-md rounded-lg bg-card p-6 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/20`}>
                             <p className="text-sm text-muted-foreground">{item.period}</p>
                             <h3 className="mt-1 text-xl font-bold text-primary">{item.role}</h3>
                             <p className="mt-1 font-semibold">{item.company}</p>
-                            <ul className={`mt-2 text-muted-foreground list-disc list-inside ${isLeft ? 'text-left md:text-right' : 'text-left'}`}>
+                            <ul className="mt-2 text-muted-foreground list-disc list-inside">
                             {item.description.split('. ').filter(d => d).map((desc, i) => (
                                 <li key={i} className="mb-1">{desc}{desc.endsWith('.') ? '' : '.'}</li>
                             ))}
                             </ul>
+                            {item.stack && item.stack.length > 0 && (
+                              <div className={`mt-4 flex flex-wrap gap-2 ${isLeft ? 'justify-start md:justify-end' : 'justify-start'}`}>
+                                {item.stack.map(tech => (
+                                  <Badge key={tech} variant="secondary">{tech}</Badge>
+                                ))}
+                              </div>
+                            )}
                         </div>
                     </div>
                   </div>

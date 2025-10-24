@@ -46,6 +46,7 @@ export const EXPERIENCE = [
       company: 'uOttawa TI | IT',
       description: 'Designed and implemented full stack PeopleSoft applications using PeopleCode, integrating dynamic front-end interfaces with robust Oracle SQL back-end systems. Applied the MVC architecture across multiple PeopleSoft projects to streamline processes and optimize overall system performance. Delivered tailored PeopleSoft applications for university clients and students, enhancing functionality and user engagement.',
       logo: Building,
+      stack: ['PeopleSoft', 'Oracle SQL']
     },
     {
       period: 'May 2022 - May 2023',
@@ -53,6 +54,7 @@ export const EXPERIENCE = [
       company: 'University of Ottawa',
       description: 'Led the development of a comprehensive accreditation tracker system for the Faculty of Engineering. Developed a full-stack web application using Node.js/Express for the back end and React (TypeScript) for the front end. Implemented a PostgreSQL database with optimized schemas and query tuning for efficient data storage.',
       logo: Building,
+      stack: ['Node.js', 'React', 'PostgreSQL']
     },
     {
       period: 'May 2022 - Sep 2022',
@@ -60,6 +62,7 @@ export const EXPERIENCE = [
       company: 'Jumping Elephants',
       description: 'Implemented unit, automated, and acceptance tests; optimized relational backend tables in Dataverse. Developed Power BI solutions with advanced data models, dashboards, and automated reporting. Delivered Power Apps for government clients, integrating external data sources to streamline workflow.',
       logo: Briefcase,
+      stack: ['Power BI', 'Power Apps', 'Dataverse']
     },
      {
       period: 'Apr 2020 - Apr 2022',
@@ -67,6 +70,7 @@ export const EXPERIENCE = [
       company: 'uOttawa | Faculty of Engineering',
       description: 'Facilitated bilingual teaching support for courses, including ELG2538, ELG2138, ITI1500, and ITI1100. Developed and prepared engaging and informative lab materials and conducted exam preparation sessions.',
       logo: Code,
+      stack: []
     },
     {
       period: 'May 2020 - Aug 2020',
@@ -74,6 +78,7 @@ export const EXPERIENCE = [
       company: 'University of Ottawa',
       description: 'Designed and populated a relational database with curated phishing and benign email samples. Implemented a machine learning pipeline in Python to classify phishing samples and auto-generate tailored exercises based on model predictions and difficulty levels.',
       logo: Bot,
+      stack: ['Python', 'Machine Learning']
     }
   ];
 
