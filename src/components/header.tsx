@@ -32,7 +32,7 @@ const Header = () => {
       <div className="container flex h-16 max-w-7xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Code2 className="h-6 w-6 text-accent" />
-          <span className="font-bold">Codefolio</span>
+          <span className="font-bold">Meyssa Smirani</span>
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
           {NAV_LINKS.map((link) => (
@@ -59,7 +59,7 @@ const Header = () => {
                 <nav className="grid gap-6 text-lg font-medium">
                   <Link href="/" className="flex items-center gap-2 text-lg font-semibold">
                     <Code2 className="h-6 w-6 text-accent" />
-                    <span>Codefolio</span>
+                    <span>Meyssa Smirani</span>
                   </Link>
                   {NAV_LINKS.map((link) => (
                     <Link

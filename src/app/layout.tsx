@@ -4,7 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
-  title: 'Codefolio - A Developer Portfolio',
+  title: 'Meyssa Smirani - A Developer Portfolio',
   description: 'A portfolio showcasing projects, skills, and experience.',
 };
 

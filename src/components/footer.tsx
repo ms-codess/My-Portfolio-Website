@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-8 sm:flex-row sm:px-6 lg:px-8">
         <div className="flex items-center gap-2">
           <Code2 className="h-6 w-6 text-accent" />
-          <span className="font-bold">Codefolio</span>
+          <span className="font-bold">Meyssa Smirani</span>
         </div>
         <div className="flex gap-4">
           {SOCIAL_LINKS.map((social) => (
@@ -25,7 +25,7 @@ const Footer = () => {
           ))}
         </div>
         <p className="text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} Codefolio. All rights reserved.
+          &copy; {new Date().getFullYear()} Meyssa Smirani. All rights reserved.
         </p>
       </div>
     </footer>
