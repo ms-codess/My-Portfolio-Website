@@ -3,8 +3,15 @@
 import { SKILLS } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
-import { ChartTooltipContent } from '@/components/ui/chart';
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, CartesianGrid } from 'recharts';
+import { ChartTooltipContent, ChartContainer, type ChartConfig } from '@/components/ui/chart';
+
+const chartConfig = {
+  proficiency: {
+    label: "Proficiency",
+    color: "hsl(var(--primary))",
+  },
+} satisfies ChartConfig
 
 const SkillsSection = () => {
   return (
@@ -41,28 +48,31 @@ const SkillsSection = () => {
             </CardHeader>
             <CardContent>
               <div className="h-80 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={SKILLS} layout="vertical" margin={{ left: 10 }}>
-                    <XAxis type="number" hide />
-                    <YAxis
-                      dataKey="name"
-                      type="category"
-                      axisLine={false}
-                      tickLine={false}
-                      tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
-                      width={80}
-                    />
-                    <Tooltip
-                        cursor={{ fill: 'hsl(var(--muted))' }}
-                        content={<ChartTooltipContent indicator="dot" />}
-                    />
-                    <Bar
-                      dataKey="proficiency"
-                      radius={[0, 4, 4, 0]}
-                      className="fill-primary"
-                    />
-                  </BarChart>
-                </ResponsiveContainer>
+                <ChartContainer config={chartConfig} className="h-full w-full">
+                    <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={SKILLS} layout="vertical" margin={{ left: 10 }}>
+                        <YAxis
+                        dataKey="name"
+                        type="category"
+                        tickLine={false}
+                        axisLine={false}
+                        tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
+                        width={80}
+                        />
+                        <XAxis type="number" hide />
+                        <CartesianGrid horizontal={false} />
+                        <Tooltip
+                            cursor={{ fill: 'hsl(var(--muted))' }}
+                            content={<ChartTooltipContent indicator="dot" />}
+                        />
+                        <Bar
+                        dataKey="proficiency"
+                        radius={[0, 4, 4, 0]}
+                        className="fill-primary"
+                        />
+                    </BarChart>
+                    </ResponsiveContainer>
+                </ChartContainer>
               </div>
             </CardContent>
           </Card>
