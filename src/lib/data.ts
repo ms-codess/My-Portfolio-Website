@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin, Twitter, Briefcase, Building, Code, Bot } from "lucide-react";
 import { PlaceHolderImages } from "./placeholder-images";
 
 export const NAV_LINKS = [
@@ -41,16 +41,39 @@ export const SKILLS = [
 
 export const EXPERIENCE = [
     {
-      period: '2023 - Present',
-      role: 'Full-Stack Developer',
-      company: 'Tech Innovations Inc.',
-      description: 'Developing and maintaining web applications using React, Node.js, and TypeScript. Collaborating with cross-functional teams to deliver high-quality software solutions.'
+      period: 'Nov 2022 - Present',
+      role: 'Intermediate Software Developer',
+      company: 'uOttawa TI | IT',
+      description: 'Designed and implemented full stack PeopleSoft applications using PeopleCode, integrating dynamic front-end interfaces with robust Oracle SQL back-end systems. Applied the MVC architecture across multiple PeopleSoft projects to streamline processes and optimize overall system performance. Delivered tailored PeopleSoft applications for university clients and students, enhancing functionality and user engagement.',
+      logo: Building,
     },
     {
-      period: '2021 - 2023',
-      role: 'Frontend Developer',
-      company: 'Creative Solutions LLC',
-      description: 'Focused on creating responsive and user-friendly interfaces with React and Tailwind CSS. Worked closely with designers to translate mockups into functional components.'
+      period: 'May 2022 - May 2023',
+      role: 'Full-stack Developer',
+      company: 'University of Ottawa',
+      description: 'Led the development of a comprehensive accreditation tracker system for the Faculty of Engineering. Developed a full-stack web application using Node.js/Express for the back end and React (TypeScript) for the front end. Implemented a PostgreSQL database with optimized schemas and query tuning for efficient data storage.',
+      logo: Building,
+    },
+    {
+      period: 'May 2022 - Sep 2022',
+      role: 'Junior Software Developer & Technical Business Analyst',
+      company: 'Jumping Elephants',
+      description: 'Implemented unit, automated, and acceptance tests; optimized relational backend tables in Dataverse. Developed Power BI solutions with advanced data models, dashboards, and automated reporting. Delivered Power Apps for government clients, integrating external data sources to streamline workflow.',
+      logo: Briefcase,
+    },
+     {
+      period: 'Apr 2020 - Apr 2022',
+      role: 'Teaching Assistant',
+      company: 'uOttawa | Faculty of Engineering',
+      description: 'Facilitated bilingual teaching support for courses, including ELG2538, ELG2138, ITI1500, and ITI1100. Developed and prepared engaging and informative lab materials and conducted exam preparation sessions.',
+      logo: Code,
+    },
+    {
+      period: 'May 2020 - Aug 2020',
+      role: 'Machine Learning Research Assistant',
+      company: 'University of Ottawa',
+      description: 'Designed and populated a relational database with curated phishing and benign email samples. Implemented a machine learning pipeline in Python to classify phishing samples and auto-generate tailored exercises based on model predictions and difficulty levels.',
+      logo: Bot,
     }
   ];
 
