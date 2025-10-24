@@ -3,14 +3,10 @@
 A modern, responsive personal portfolio showcasing my **skills**, **projects**, and **experience** as a software developer and AI enthusiast.  
 Built with **Next.js 15**, **TypeScript**, **Tailwind CSS**, and **shadcn/ui**, the site features smooth animations, a dark/light theme toggle, and dynamic project cards populated directly from GitHub.
 
-## ✨ Features
-- 🚀 **Next.js 15 (App Router)** — modern and performant React framework  
-- 🧑‍💻 **TypeScript** for type safety and clean code  
-- 🎨 **Tailwind CSS** with custom theme tokens  
-- 🧩 **shadcn/ui** components + Lucide icons  
-- 🌙 **Dark/Light mode** via `next-themes`  
-- 🪄 Smooth section animations & transitions  
-- 🔗 Auto-fetched project cards from GitHub  
+##  Features
+- Dark/Light mode via `next-themes`  
+- Smooth section animations & transitions  
+- Auto-fetched project cards from GitHub  
 
 ## 📁 Sections
 - **About** — a short introduction and mission statement  
