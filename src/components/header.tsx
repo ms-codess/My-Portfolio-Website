@@ -7,6 +7,7 @@ import { NAV_LINKS } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
+import { ModeToggle } from './theme-toggle';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,32 +45,35 @@ const Header = () => {
             </Link>
           ))}
         </nav>
-        <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle navigation menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <nav className="grid gap-6 text-lg font-medium">
-                <Link href="/" className="flex items-center gap-2 text-lg font-semibold">
-                  <Code2 className="h-6 w-6 text-accent" />
-                  <span>Codefolio</span>
-                </Link>
-                {NAV_LINKS.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-muted-foreground hover:text-foreground"
-                  >
-                    {link.label}
+        <div className="flex items-center gap-4">
+          <ModeToggle />
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Toggle navigation menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right">
+                <nav className="grid gap-6 text-lg font-medium">
+                  <Link href="/" className="flex items-center gap-2 text-lg font-semibold">
+                    <Code2 className="h-6 w-6 text-accent" />
+                    <span>Codefolio</span>
                   </Link>
-                ))}
-              </nav>
-            </SheetContent>
-          </Sheet>
+                  {NAV_LINKS.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>
