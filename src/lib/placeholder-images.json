@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "project-1",
+      "description": "A web application for project management.",
+      "imageUrl": "https://images.unsplash.com/photo-1659018966825-43297e655ccf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXNoYm9hcmQlMjBjaGFydHxlbnwwfHx8fDE3NjEyMzYyODJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dashboard chart"
+    },
+    {
+      "id": "project-2",
+      "description": "An e-commerce platform for selling artisanal goods.",
+      "imageUrl": "https://images.unsplash.com/photo-1580828343064-fde4fc206bc6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvbmxpbmUlMjBzdG9yZXxlbnwwfHx8fDE3NjEyMjg4NjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "online store"
+    },
+    {
+      "id": "project-3",
+      "description": "A mobile app for tracking fitness goals.",
+      "imageUrl": "https://images.unsplash.com/photo-1727432813810-cabde273e273?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmaXRuZXNzJTIwYXBwfGVufDB8fHx8MTc2MTIwNzA5M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fitness app"
+    },
+    {
+      "id": "project-4",
+      "description": "A data visualization dashboard for financial analytics.",
+      "imageUrl": "https://images.unsplash.com/photo-1748609278627-4b0e483b9b70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmaW5hbmNpYWwlMjBkYXNoYm9hcmR8ZW58MHx8fHwxNzYxMjg4OTMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "financial dashboard"
+    },
+    {
+      "id": "project-5",
+      "description": "A social networking site for book lovers.",
+      "imageUrl": "https://images.unsplash.com/photo-1683721003111-070bcc053d8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c29jaWFsJTIwbmV0d29ya3xlbnwwfHx8fDE3NjEzMDkzMTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "social network"
+    },
+    {
+      "id": "project-6",
+      "description": "A cloud-based file storage solution.",
+      "imageUrl": "https://images.unsplash.com/photo-1569428034239-f9565e32e224?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjbG91ZCUyMHN0b3JhZ2V8ZW58MHx8fHwxNzYxMjQ5MTE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cloud storage"
+    }
+  ]
 }
