@@ -35,6 +35,12 @@
       "description": "A cloud-based file storage solution.",
       "imageUrl": "https://images.unsplash.com/photo-1569428034239-f9565e32e224?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjbG91ZCUyMHN0b3JhZ2V8ZW58MHx8fHwxNzYxMjQ5MTE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cloud storage"
+    },
+    {
+      "id": "about-me",
+      "description": "A portrait of the developer.",
+      "imageUrl": "https://images.unsplash.com/photo-1689218742634-4147e23137fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkZXZlbG9wZXIlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjEyMzM1ODh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "developer portrait"
     }
   ]
 }

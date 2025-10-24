@@ -2,6 +2,7 @@ import { Github, Linkedin, Twitter } from "lucide-react";
 import { PlaceHolderImages } from "./placeholder-images";
 
 export const NAV_LINKS = [
+  { href: '#about', label: 'About' },
   { href: '#projects', label: 'Projects' },
   { href: '#experience', label: 'Experience' },
   { href: '#education', label: 'Education' },
@@ -14,6 +15,14 @@ export const SOCIAL_LINKS = [
     { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
     { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
 ];
+
+const aboutMeImage = PlaceHolderImages.find(p => p.id === 'about-me');
+
+export const ABOUT_ME = {
+  paragraph1: "Hello! I'm Meyssa Smirani, a passionate and detail-oriented Full-Stack Developer with a love for creating elegant and efficient solutions. My journey in technology has been driven by a curiosity to understand how things work and a desire to build applications that make a difference.",
+  paragraph2: "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying a good cup of coffee. I believe in continuous learning and am always looking for new challenges to grow my skills.",
+  image: aboutMeImage
+};
 
 export const SKILLS = [
     { name: 'JavaScript', proficiency: 95, icon: 'javascript' },
