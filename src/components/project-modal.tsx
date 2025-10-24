@@ -9,23 +9,10 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Github, Link as LinkIcon, BarChart } from 'lucide-react';
-
-type ProjectType = {
-    title: string;
-    description: string;
-    longDescription: string;
-    image?: {
-        imageUrl: string;
-        imageHint: string;
-    };
-    tags: string[];
-    liveUrl: string;
-    githubUrl: string;
-    metrics?: Record<string, string>;
-};
+import type { Project } from '@/lib/data';
 
 type ProjectModalProps = {
-  project: ProjectType;
+  project: Project;
   isOpen: boolean;
   onClose: () => void;
 };
@@ -79,12 +66,14 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
             )}
 
             <div className="flex gap-4">
-            <Button asChild>
-                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                <LinkIcon className="mr-2 h-4 w-4" />
-                Live Demo
-                </a>
-            </Button>
+            {project.liveUrl && project.liveUrl !== '#' && (
+                <Button asChild>
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                    <LinkIcon className="mr-2 h-4 w-4" />
+                    Live Demo
+                    </a>
+                </Button>
+            )}
             <Button asChild variant="secondary">
                 <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                 <Github className="mr-2 h-4 w-4" />

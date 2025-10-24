@@ -2,19 +2,11 @@ import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight } from 'lucide-react';
+import type { Project } from '@/lib/data';
 
-type ProjectType = {
-    title: string;
-    description: string;
-    image?: {
-        imageUrl: string;
-        imageHint: string;
-    };
-    tags: string[];
-};
 
 type ProjectCardProps = {
-  project: ProjectType;
+  project: Project;
   onSelect: () => void;
 };
 
