@@ -1,17 +1,49 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 const CodeSnippet = ({ children, className, style }: { children: React.ReactNode, className?: string, style?: React.CSSProperties }) => (
     <div
-      className={`absolute hidden lg:block bg-card/80 backdrop-blur-sm border border-border/20 rounded-lg p-3 text-xs text-muted-foreground shadow-lg animate-[float_6s_ease-in-out_infinite] ${className}`}
+      className={cn(
+        'absolute hidden lg:block bg-card/80 backdrop-blur-sm border border-border/20 rounded-lg p-3 text-xs text-muted-foreground shadow-lg animate-[float_6s_ease-in-out_infinite]',
+        className
+      )}
       style={style}
     >
       <pre><code>{children}</code></pre>
     </div>
   );
+
+const Typewriter = ({ text, speed = 100 }: { text: string; speed?: number }) => {
+    const [displayedText, setDisplayedText] = useState('');
+  
+    useEffect(() => {
+      let i = 0;
+      const typingInterval = setInterval(() => {
+        if (i < text.length) {
+          setDisplayedText(text.substring(0, i + 1));
+          i++;
+        } else {
+          clearInterval(typingInterval);
+        }
+      }, speed);
+  
+      return () => {
+        clearInterval(typingInterval);
+      };
+    }, [text, speed]);
+  
+    return (
+      <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+        {displayedText}
+        <span className="animate-ping">|</span>
+      </h1>
+    );
+  };
 
 const HeroSection = () => {
   return (
@@ -21,7 +53,7 @@ const HeroSection = () => {
         </div>
 
         <CodeSnippet className="top-[15%] left-[10%]" style={{ animationDelay: '0s' }}>
-            {`const coder = {\n  name: 'Alex Doe',\n  skills: ['React', 'Next.js']\n};`}
+            {`const coder = {\n  name: 'Meyssa Smirani',\n  skills: ['React', 'Next.js']\n};`}
         </CodeSnippet>
         <CodeSnippet className="bottom-[20%] left-[20%]" style={{ animationDelay: '2s' }}>
             {`function helloWorld() {\n  console.log('Welcome!');\n}`}
@@ -35,9 +67,7 @@ const HeroSection = () => {
 
 
       <div className="container relative z-10 mx-auto flex max-w-7xl flex-col items-center text-center px-4">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-          Digital Craftsman & Code Artisan
-        </h1>
+        <Typewriter text="Digital Craftsman & Code Artisan" />
         <p className="mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl">
           I build beautiful, scalable, and user-friendly web applications that solve real-world problems.
         </p>
