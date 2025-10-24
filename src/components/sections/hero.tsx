@@ -69,7 +69,7 @@ const HeroSection = () => {
       <div className="container relative z-10 mx-auto flex max-w-7xl flex-col items-center text-center px-4">
         <Typewriter text="Meyssa Smirani" />
         <p className="mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl">
-          I build beautiful, scalable, and user-friendly web applications that solve real-world problems.
+          Every day is a new commit in my learning journey.
         </p>
         <div className="mt-10">
           <Button asChild size="lg" className="group shadow-lg transition-shadow hover:shadow-neon-accent">
