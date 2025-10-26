@@ -18,6 +18,23 @@ const getPrimaryField = (topics: string[]): string => {
     return 'Web App';
 };
 
+// Repo-name → additional tags/skills mapping.
+// Extend this list to enrich skills shown on cards.
+const EXTRA_TAGS_BY_REPO: Record<string, string[]> = {
+  // AI/ML + Data projects
+  'accident-severity-analysis-and-prediction': ['Python', 'scikit-learn', 'Pandas', 'NumPy', 'Matplotlib'],
+  'patient-appointment-prediction': ['Python', 'scikit-learn', 'LightGBM', 'Optuna', 'SHAP', 'Streamlit'],
+  'online-shoppers-prediction': ['Python', 'scikit-learn', 'Pandas', 'Streamlit'],
+
+  // Web apps
+  'jobtailor': ['Next.js', 'TypeScript', 'TailwindCSS', 'shadcn/ui', 'Gemini', 'Gemini 2.5 Flash', 'Google Gemini', 'GenAI', 'LLM', 'Node.js'],
+  'my-portfolio-website': ['Next.js', 'TypeScript', 'TailwindCSS', 'shadcn/ui', 'Framer Motion'],
+  'coffeshop-website-template': ['HTML', 'CSS', 'TypeScript', 'TailwindCSS', 'Bootstrap'],
+  'coffeeshop-website-template': ['HTML', 'CSS', 'TypeScript', 'TailwindCSS', 'Bootstrap'],
+
+  // Add more: 'repo-name': ['TagA', 'TagB']
+};
+
 const getImageForProject = (repoName: string): Project['image'] => {
     const sanitizedName = repoName.toLowerCase().replace(/[\s-]/g, '');
     const foundImage = PlaceHolderImages.find(img => 
@@ -32,12 +49,86 @@ const getImageForProject = (repoName: string): Project['image'] => {
         };
     }
     
-    // Fallback image
-    const seed = repoName.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    // Prefer local fallback image; Next.js will serve from /public
     return {
-        imageUrl: `https://picsum.photos/seed/${seed}/600/400`,
-        imageHint: 'code project',
+        imageUrl: '/projects.png',
+        imageHint: 'project cover',
     };
+};
+
+// Per-repo overrides (description, longDescription, etc.)
+const REPO_OVERRIDES: Record<string, Partial<Project>> = {
+  'jobtailor': {
+    description:
+      'AI-powered resume tailoring tool — generates optimized, job-specific resumes, cover letters, and ATS insights.',
+    longDescription:
+      'JobTailor streamlines applications with AI: paste a job posting and your base resume, then generate tailored resumes, cover letters, and ATS keyword insights powered by Google Gemini. Built with Next.js, TypeScript, TailwindCSS, and shadcn/ui, with a Node.js integration.',
+    tags: ['TypeScript', 'Next.js', 'TailwindCSS', 'shadcn/ui', 'Google Gemini', 'Node.js'],
+  },
+};
+
+// Normalize and prettify tags/skills; removes repetition across casing/spelling.
+const NAME_MAP: Record<string, string> = {
+  'nextjs': 'Next.js',
+  'next.js': 'Next.js',
+  'react': 'React',
+  'typescript': 'TypeScript',
+  'javascript': 'JavaScript',
+  'node': 'Node.js',
+  'nodejs': 'Node.js',
+  'express': 'Express.js',
+  'express.js': 'Express.js',
+  'tailwind': 'TailwindCSS',
+  'tailwindcss': 'TailwindCSS',
+  'shadcn': 'shadcn/ui',
+  'shadcn-ui': 'shadcn/ui',
+  'shadcn/ui': 'shadcn/ui',
+  'graphql': 'GraphQL',
+  'vercel': 'Vercel',
+  'firebase': 'Firebase',
+  'docker': 'Docker',
+  'python': 'Python',
+  'pytorch': 'PyTorch',
+  'tensorflow': 'TensorFlow',
+  'scikit-learn': 'scikit-learn',
+  'numpy': 'NumPy',
+  'pandas': 'Pandas',
+  'matplotlib': 'Matplotlib',
+  'lightgbm': 'LightGBM',
+  'optuna': 'Optuna',
+  'shap': 'SHAP',
+  'streamlit': 'Streamlit',
+  'power bi': 'Power BI',
+  'oracle sql': 'Oracle SQL',
+  'peoplesoft': 'PeopleSoft',
+  'postgresql': 'PostgreSQL',
+  'mysql': 'MySQL',
+  'html': 'HTML',
+  'css': 'CSS',
+  'bootstrap': 'Bootstrap',
+  'langchain': 'LangChain',
+  'huggingface': 'Hugging Face',
+  'hugging face': 'Hugging Face',
+  'llm': 'LLM',
+  'ai': 'AI',
+  'ml': 'ML',
+  'gemini': 'Gemini',
+  'google gemini': 'Google Gemini',
+};
+
+const toTitle = (s: string) =>
+  s
+    .split(/\s+/)
+    .map(w => (w ? w[0].toUpperCase() + w.slice(1).toLowerCase() : w))
+    .join(' ');
+
+const normalizeTag = (tag: string): string => {
+  const raw = (tag || '').toString().trim();
+  if (!raw) return '';
+  const lowered = raw.replace(/[_-]/g, ' ').toLowerCase();
+  if (NAME_MAP[lowered]) return NAME_MAP[lowered];
+  // Preserve known punctuations like "/" and ".js" where appropriate already mapped above
+  return toTitle(lowered);
 };
 
 export async function getGithubProjects(username: string): Promise<{ projects: Project[], fields: string[] }> {
@@ -49,24 +140,60 @@ export async function getGithubProjects(username: string): Promise<{ projects: P
             per_page: 10,
         });
 
+        const EXCLUDED_REPO_KEYWORDS = ['ms-codes', 'ms-codess', 'ms codes project'];
         const projects: Project[] = repos
-            .filter(repo => !repo.fork && repo.description)
+            .filter(repo => {
+                if (repo.fork) return false;
+                if (!repo.description) return false;
+                const name = (repo.name || '').toLowerCase();
+                // Hide GitHub profile repo (same as username)
+                if (name === username.toLowerCase()) return false;
+                // Hide known keywords like "ms codes project"
+                if (EXCLUDED_REPO_KEYWORDS.some(k => name.includes(k))) return false;
+                return true;
+            })
             .map(repo => {
-                const tags = [...(repo.topics || [])];
-                if (repo.language) {
-                    tags.unshift(repo.language);
-                }
+                const repoKey = repo.name.toLowerCase();
+                // Start with GitHub topics + language
+                let rawTags: string[] = [...(repo.topics || [])];
+                if (repo.language) rawTags.unshift(repo.language);
 
-                return {
+                // Enrich from curated map
+                if (EXTRA_TAGS_BY_REPO[repoKey]) rawTags.push(...EXTRA_TAGS_BY_REPO[repoKey]);
+
+                // Base project
+                let project: Project = {
                     title: repo.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
                     description: repo.description || 'No description available.',
                     longDescription: repo.description || 'No detailed description available.',
                     image: getImageForProject(repo.name),
-                    tags: Array.from(new Set(tags)),
+                    tags: [],
                     field: getPrimaryField(repo.topics || []),
                     liveUrl: repo.homepage || '#',
                     githubUrl: repo.html_url,
-                };
+                } as Project;
+
+                // Apply overrides first (may override tags)
+                if (REPO_OVERRIDES[repoKey]) {
+                  project = { ...project, ...REPO_OVERRIDES[repoKey] } as Project;
+                }
+
+                // Choose final tags: override if provided, else rawTags
+                const chosenRaw = Array.isArray((project as any).tags) && (project as any).tags.length
+                  ? ((project as any).tags as string[])
+                  : rawTags;
+
+                // Normalize + dedupe
+                project.tags = Array.from(
+                  new Map(
+                    chosenRaw
+                      .map(normalizeTag)
+                      .filter(Boolean)
+                      .map((t) => [t.toLowerCase(), t])
+                  ).values()
+                );
+
+                return project;
         });
 
         const fields = Array.from(new Set(projects.map(p => p.field)));

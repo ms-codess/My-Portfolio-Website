@@ -1,0 +1,49 @@
+[
+  {
+    "period": "Nov 2022 - Present",
+    "role": "Intermediate Software Developer",
+    "company": "University of Ottawa- IT Department",
+    "description": "Develop, enhance, and maintain enterprise-grade PeopleSoft applications supporting critical academic and administrative processes. Build scalable backend workflows using PeopleCode, Application Engine, and Oracle SQL, and integrate with external services through Integration Broker and Component Interfaces. Collaborate with cross-functional teams to streamline business processes, automate data flows, and modernize legacy systems. Contributed to PeopleTools upgrades (8.61.x) and delivered high-impact solutions for transcript and transfer credit services.",
+    "logo": "Building",
+    "stack": [
+      "PeopleSoft",
+      "Oracle SQL",
+      "JavaScript",
+      "BI Publisher",
+      "Phire",
+      "Git"
+    ]
+  },
+  {
+    "period": "May 2022 - May 2023",
+    "role": "Full-stack Developer",
+    "company": "University of Ottawa- Faculty of Engineering",
+    "description": "Led the development of a comprehensive accreditation tracker system for the Faculty of Engineering. Developed a full-stack web application using Node.js/Express for the back end and React (TypeScript) for the front end. Implemented a PostgreSQL database with optimized schemas and query tuning for efficient data storage.",
+    "logo": "Building",
+    "stack": ["Node.js", "React", "PostgreSQL", "TypeScript"]
+  },
+  {
+    "period": "May 2022 - Sep 2022",
+    "role": "Junior Software Developer & Technical Business Analyst",
+    "company": "Jumping Elephants",
+    "description": "Implemented unit, automated, and acceptance tests; optimized relational backend tables in Dataverse. Developed Power BI solutions with advanced data models, dashboards, and automated reporting. Delivered Power Apps for government clients, integrating external data sources to streamline workflow.",
+    "logo": "Briefcase",
+    "stack": ["Power BI", "Power Apps", "Dataverse", "JavaScript"]
+  },
+  {
+    "period": "Apr 2020 - Apr 2022",
+    "role": "Teaching Assistant",
+    "company": "University of Ottawa- Faculty of Engineering",
+    "description": "Facilitated bilingual teaching support for courses, including ELG2538, ELG2138, ITI1500, and ITI1100. Developed and prepared engaging and informative lab materials and conducted exam preparation sessions.",
+    "logo": "Code",
+    "stack": ["Python", "Jupyter Notebook", "Django"]
+  },
+  {
+    "period": "May 2020 - Aug 2020",
+    "role": "Machine Learning Research Assistant",
+    "company": "University of Ottawa",
+    "description": "Designed and populated a relational database with curated phishing and benign email samples. Implemented a machine learning pipeline in Python to classify phishing samples and auto-generate tailored exercises based on model predictions and difficulty levels.",
+    "logo": "Bot",
+    "stack": ["Python", "Django", "MySQL"]
+  }
+]

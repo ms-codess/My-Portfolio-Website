@@ -1,4 +1,6 @@
-import Image from 'next/image';
+"use client";
+
+import * as React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight } from 'lucide-react';
@@ -20,31 +22,23 @@ const ProjectCard = ({ project, onSelect }: ProjectCardProps) => {
       onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSelect()}
     >
       <CardHeader className="p-0">
-        <div className="relative h-48 w-full overflow-hidden">
-          {project.image && (
-            <Image
-              src={project.image.imageUrl}
-              alt={project.title}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-              data-ai-hint={project.image.imageHint}
-            />
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-           <div className="absolute bottom-4 right-4 flex items-center justify-center rounded-full bg-accent p-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-             <ArrowRight className="h-4 w-4 text-accent-foreground" />
-           </div>
-        </div>
+        {/* Decorative header bar instead of photo */}
+        <div className="relative h-2 w-full bg-gradient-to-r from-accent via-primary to-accent opacity-80" />
       </CardHeader>
       <CardContent className="flex flex-1 flex-col p-4">
         <CardTitle className="text-xl font-bold">{project.title}</CardTitle>
         <p className="mt-2 flex-1 text-muted-foreground">{project.description}</p>
         <div className="mt-4 flex flex-wrap gap-2">
-          {project.tags.slice(0, 3).map((tag) => (
+          {project.tags.map((tag) => (
             <Badge key={tag} variant="secondary">
               {tag}
             </Badge>
           ))}
+        </div>
+        <div className="mt-3 flex justify-end">
+          <span className="inline-flex items-center justify-center rounded-full bg-accent p-2 opacity-80 group-hover:opacity-100 transition-opacity">
+            <ArrowRight className="h-4 w-4 text-accent-foreground" />
+          </span>
         </div>
       </CardContent>
     </Card>

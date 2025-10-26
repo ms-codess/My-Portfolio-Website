@@ -22,25 +22,19 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-3xl">
         <DialogHeader>
-          <div className="relative mb-4 h-64 w-full rounded-lg overflow-hidden">
-            {project.image && (
-              <Image
-                src={project.image.imageUrl}
-                alt={project.title}
-                fill
-                className="object-cover"
-                data-ai-hint={project.image.imageHint}
-              />
-            )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-          </div>
           <DialogTitle className="text-3xl font-bold">{project.title}</DialogTitle>
           <DialogDescription className="text-md text-muted-foreground">
             {project.description}
           </DialogDescription>
         </DialogHeader>
         <div className="mt-4 space-y-6">
-            <p className="text-foreground">{project.longDescription}</p>
+            {(() => {
+              const desc = (project.description || '').trim();
+              const longDesc = (project.longDescription || '').trim();
+              return longDesc && longDesc.toLowerCase() !== desc.toLowerCase() ? (
+                <p className="text-foreground">{longDesc}</p>
+              ) : null;
+            })()}
 
             <div>
                 <h4 className="font-semibold mb-2">Tech Stack</h4>

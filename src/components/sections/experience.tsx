@@ -1,64 +1,99 @@
-import { EXPERIENCE } from '@/lib/data';
-import { Badge } from '@/components/ui/badge';
+"use client";
+
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { motion } from "framer-motion";
+// removed center icon per request
+import experienceData from "@/lib/experience.json";
+import * as React from 'react';
+
+type ExperienceItem = {
+  company: string;
+  role: string;
+  period: string;
+  stack: string[];
+  description?: string;
+  achievements?: string[];
+};
+
+const containerVariants = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
+const itemVariants = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } } };
 
 const ExperienceSection = () => {
+  const items: ExperienceItem[] = experienceData as ExperienceItem[];
+
   return (
-    <section id="experience" className="bg-muted/30">
+    <section id="experiences" className="bg-muted/30">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">My Journey</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            A timeline of my professional experience.
-          </p>
+        <div className="text-left">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Experiences</h2>
+          <p className="mt-4 text-lg text-muted-foreground">A dynamic timeline of my professional journey.</p>
         </div>
-        <div className="relative mt-12">
-          <div
-            className="absolute left-0 top-0 h-full w-0.5 bg-border md:left-1/2 md:-translate-x-1/2"
-            aria-hidden="true"
-          ></div>
-          <div className="space-y-12">
-            {EXPERIENCE.map((item, index) => {
+
+        <div className="mt-10 relative mx-auto max-w-4xl">
+            <div className="absolute left-4 top-0 h-full w-0.5 bg-border md:left-1/2 md:-translate-x-1/2" />
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              className="space-y-10 pr-2"
+            >
+            {items.map((item, index) => {
               const isLeft = index % 2 === 0;
-              const Icon = item.logo;
               return (
-                <div key={index} className="relative flex items-start md:items-center">
-                  <div
-                    className={`w-full md:w-1/2 ${isLeft ? 'pr-0 md:pr-8 text-left md:text-right' : 'pl-0 md:pl-8'}`}
-                  >
-                    <div className={`flex w-full ${isLeft ? 'justify-start md:justify-end' : 'justify-start'}`}>
-                        <div className={`relative ml-10 md:ml-0 fade-in-up w-full max-w-md rounded-lg bg-card p-6 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/20`}>
-                            <p className="text-sm text-muted-foreground">{item.period}</p>
-                            <h3 className="mt-1 text-xl font-bold text-primary">{item.role}</h3>
-                            <p className="mt-1 font-semibold">{item.company}</p>
-                            <ul className="mt-2 text-muted-foreground list-disc list-inside">
-                            {item.description.split('. ').filter(d => d).map((desc, i) => (
-                                <li key={i} className="mb-1">{desc}{desc.endsWith('.') ? '' : '.'}</li>
+                <motion.div key={`${item.company}-${index}`} variants={itemVariants} className="relative md:flex md:items-center">
+                  <div className={`md:w-1/2 ${isLeft ? 'md:pr-8 md:text-right' : 'md:order-2 md:pl-8'}`}>
+                    <Card className="bg-card/90 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-neon-accent border-accent/30">
+                      <CardHeader className="pb-2">
+                        <CardDescription className="text-xs">{item.period}</CardDescription>
+                        <CardTitle className="text-lg">{item.role}</CardTitle>
+                        <div className="mt-1 text-sm font-semibold">{item.company}</div>
+                      </CardHeader>
+                      <CardContent>
+                        {item.stack?.length > 0 && (
+                          <div className={`flex flex-wrap gap-2 ${isLeft ? 'justify-start md:justify-end' : 'justify-start'}`}>
+                            {item.stack.map((tech) => (
+                              <motion.span key={tech} whileHover={{ rotate: -2, scale: 1.05 }} transition={{ type: 'spring', stiffness: 300, damping: 15 }}>
+                                <Badge variant="secondary" className="cursor-default">{tech}</Badge>
+                              </motion.span>
                             ))}
-                            </ul>
-                            {item.stack && item.stack.length > 0 && (
-                              <div className={`mt-4 flex flex-wrap gap-2 ${isLeft ? 'justify-start md:justify-end' : 'justify-start'}`}>
-                                {item.stack.map(tech => (
-                                  <Badge key={tech} variant="secondary">{tech}</Badge>
-                                ))}
-                              </div>
-                            )}
-                        </div>
-                    </div>
+                          </div>
+                        )}
+
+                        {(item.achievements && item.achievements.length > 0) || item.description ? (
+                          <Accordion type="single" collapsible className="mt-3">
+                            <AccordionItem value="achievements">
+                              <AccordionTrigger className="text-sm">More details</AccordionTrigger>
+                              <AccordionContent>
+                                {(() => {
+                                  const bullets = (item.achievements && item.achievements.length > 0)
+                                    ? item.achievements
+                                    : splitIntoBullets(item.description || '');
+                                  return (
+                                    <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1 text-left md:text-left">
+                                      {bullets.map((b, i) => (
+                                        <li key={i}>{b}</li>
+                                      ))}
+                                    </ul>
+                                  );
+                                })()}
+                              </AccordionContent>
+                            </AccordionItem>
+                          </Accordion>
+                        ) : null}
+                      </CardContent>
+                    </Card>
                   </div>
 
-                  {/* Icon in the middle */}
-                  <div className="absolute left-0 top-0 z-10 h-12 w-12 -translate-x-1/2 md:left-1/2 md:top-1/2 md:-translate-y-1/2">
-                    <span className="flex h-full w-full items-center justify-center rounded-full bg-primary ring-8 ring-background transition-transform duration-300 group-hover:scale-110">
-                      <Icon className="h-6 w-6 text-primary-foreground" />
-                    </span>
-                  </div>
+                  {/* center icon removed */}
 
-                  {/* Empty div for spacing on the other side (Desktop only) */}
-                  <div className="hidden md:block w-1/2"></div>
-                </div>
+                  <div className="hidden md:block md:w-1/2" />
+                </motion.div>
               );
             })}
-          </div>
+            </motion.div>
         </div>
       </div>
     </section>
@@ -66,3 +101,18 @@ const ExperienceSection = () => {
 };
 
 export default ExperienceSection;
+
+function excerpt(text: string, max = 180) {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  const lastSpace = cut.lastIndexOf(' ');
+  return `${cut.slice(0, Math.max(0, lastSpace))}…`;
+}
+
+function splitIntoBullets(text: string) {
+  return text
+    .split(/\.(\s+|$)/)
+    .map((t) => t.replace(/\s+/g, ' ').trim())
+    .filter((t) => t.length > 0)
+    .map((t) => (t.endsWith('.') ? t : `${t}.`));
+}
