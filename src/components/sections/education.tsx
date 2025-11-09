@@ -8,7 +8,7 @@ import EDUCATION from "@/data/education";
 const EducationSection = () => {
   return (
     <section id="education" className="py-16 max-w-5xl mx-auto px-4">
-      <h2 className="text-3xl font-bold mb-10 text-center">🎓 Education</h2>
+      <h2 className="text-3xl font-bold mb-10 text-center">Education</h2>
       <div className="relative border-l border-white/20 ml-4 dark:border-white/20 border-border/40">
         {EDUCATION.map((edu, idx) => (
           <motion.div
@@ -56,3 +56,4 @@ function LogoWithFallback({ src, alt }: { src: string; alt: string }) {
     />
   );
 }
+

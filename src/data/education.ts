@@ -5,7 +5,7 @@ export const EDUCATION = [
     institution: 'University of Ottawa',
     logo: '/logos/uottawa.png',
     description:
-      'Developing applied AI projects in NLP, computer vision, and data analysis. Actively exploring research opportunities in data attribution and model unlearning.'
+      'Applied AI focus in NLP and computer vision; exploring data attribution and model unlearning.'
   },
   {
     period: '2017 - 2022',
@@ -13,9 +13,8 @@ export const EDUCATION = [
     institution: 'University of Ottawa',
     logo: '/logos/uottawa.png',
     description:
-      'Graduated with a strong foundation in software engineering, data structures, algorithms, and enterprise systems.'
+      'Dual degree with core coursework in software engineering, algorithms, and systems.'
   }
 ];
 
 export default EDUCATION;
-

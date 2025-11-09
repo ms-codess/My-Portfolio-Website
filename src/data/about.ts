@@ -13,7 +13,7 @@ export type AboutInfo = {
 
 export const ABOUT_ME: AboutInfo = {
   name: 'Meyssa Smirani',
-  headline: 'Intermediate Software Developer • Aspiring Machine Learning Engineer',
+  headline: ' Software Development & Artificial Intelligence',
   location: {
     current: 'Ottawa, Canada',
   },
@@ -22,15 +22,7 @@ export const ABOUT_ME: AboutInfo = {
     '3+ years developing and integrating enterprise systems',
     'Strong background in PeopleSoft, Oracle SQL, and modern web technologies',
     'Pursuing a Master\'s in Artificial Intelligence and building machine learning projects'
-  ],
-  tags: [
-    'Python',
-    'PeopleSoft',
-    'Oracle SQL',
-    'React/Next.js',
-    'System Design',
-    'Machine Learning'
-  ],
+  ]
 };
 
 

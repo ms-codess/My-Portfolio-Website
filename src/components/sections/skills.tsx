@@ -28,7 +28,7 @@ import {
   SiOpenai,
   SiHuggingface,
   SiLangchain,
-  SiNodedotjs
+  SiNodedotjs,
 } from "react-icons/si";
 import { FaPeopleArrows, FaChartBar } from "react-icons/fa";
 
@@ -60,7 +60,7 @@ const icons: Record<string, IconType> = {
   langchain: SiLangchain,
   nodejs: SiNodedotjs,
   peoplesoft: FaPeopleArrows,
-  api: SiGraphql
+  api: SiGraphql,
 };
 
 export default function SkillsSection() {
@@ -73,7 +73,7 @@ export default function SkillsSection() {
   ];
   return (
     <section id="skills" className="py-16 max-w-6xl mx-auto px-4">
-      <h2 className="text-3xl font-bold mb-10 text-center">🧠 Skills & Tools</h2>
+      <h2 className="text-3xl font-bold mb-10 text-center">Skills & Tools</h2>
       <div className="space-y-12">
         {SKILLS.map((category, idx) => (
           <motion.div
@@ -97,14 +97,17 @@ export default function SkillsSection() {
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 200 }}
                   >
-                    {/* Animated colorful backdrop */}
-                    <div className={`absolute inset-0 -z-10 bg-gradient-to-br ${palette} opacity-60 group-hover:opacity-90 blur-xl transition-opacity`} />
+                    <div
+                      className={`absolute inset-0 -z-10 bg-gradient-to-br ${palette} opacity-60 group-hover:opacity-90 blur-xl transition-opacity`}
+                    />
                     <motion.div
                       className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--accent)/0.25),transparent_40%)]"
                       animate={{ rotate: 360 }}
                       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                     />
-                    {Icon && <Icon className="text-4xl mb-2 text-accent transition-colors group-hover:text-primary" />}
+                    {Icon && (
+                      <Icon className="text-4xl mb-2 text-accent transition-colors group-hover:text-primary" />
+                    )}
                     <span className="font-medium text-center">{skill.name}</span>
                   </motion.div>
                 );
@@ -116,3 +119,4 @@ export default function SkillsSection() {
     </section>
   );
 }
+
