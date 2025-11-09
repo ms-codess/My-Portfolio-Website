@@ -13,7 +13,7 @@ export type AboutInfo = {
 
 export const ABOUT_ME: AboutInfo = {
   name: 'Meyssa Smirani',
-  headline: 'Intermediate Software Developer • Aspiring ML Engineer',
+  headline: 'Intermediate Software Developer • Aspiring Machine Learning Engineer',
   location: {
     current: 'Ottawa, Canada',
   },

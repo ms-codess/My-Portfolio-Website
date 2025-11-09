@@ -26,6 +26,10 @@ const EXTRA_TAGS_BY_REPO: Record<string, string[]> = {
   'patient-appointment-prediction': ['Python', 'scikit-learn', 'LightGBM', 'Optuna', 'SHAP', 'Streamlit'],
   'online-shoppers-prediction': ['Python', 'scikit-learn', 'Pandas', 'Streamlit'],
 
+  // RAG app
+  'askquorarag': ['Python', 'FAISS', 'Sentence Transformers', 'Docker', 'Streamlit', 'RAG'],
+  'ask-quora-rag': ['Python', 'FAISS', 'Sentence Transformers', 'Docker', 'Streamlit', 'RAG'],
+
   // Web apps
   'jobtailor': ['Next.js', 'TypeScript', 'TailwindCSS', 'shadcn/ui', 'Gemini', 'Gemini 2.5 Flash', 'Google Gemini', 'GenAI', 'LLM', 'Node.js'],
   'my-portfolio-website': ['Next.js', 'TypeScript', 'TailwindCSS', 'shadcn/ui', 'Framer Motion'],
@@ -64,6 +68,20 @@ const REPO_OVERRIDES: Record<string, Partial<Project>> = {
     longDescription:
       'JobTailor streamlines applications with AI: paste a job posting and your base resume, then generate tailored resumes, cover letters, and ATS keyword insights powered by Google Gemini. Built with Next.js, TypeScript, TailwindCSS, and shadcn/ui, with a Node.js integration.',
     tags: ['TypeScript', 'Next.js', 'TailwindCSS', 'shadcn/ui', 'Google Gemini', 'Node.js'],
+  },
+  'askquorarag': {
+    description:
+      'Retrieval-Augmented Generation app that answers questions using real Quora-style Q&A data.',
+    longDescription:
+      'AskQuoraRAG is a RAG system that indexes Quora-like Q&A content using Sentence Transformers embeddings and FAISS for fast similarity search. A Streamlit UI lets users ask questions and retrieve semantically relevant answers, with Docker for reproducible deployment.',
+    tags: ['FAISS', 'Sentence Transformers', 'Docker', 'Streamlit', 'RAG'],
+  },
+  'ask-quora-rag': {
+    description:
+      'Retrieval-Augmented Generation app that answers questions using real Quora-style Q&A data.',
+    longDescription:
+      'AskQuoraRAG is a RAG system that indexes Quora-like Q&A content using Sentence Transformers embeddings and FAISS for fast similarity search. A Streamlit UI lets users ask questions and retrieve semantically relevant answers, with Docker for reproducible deployment.',
+    tags: ['FAISS', 'Sentence Transformers', 'Docker', 'Streamlit', 'RAG'],
   },
 };
 
@@ -114,6 +132,11 @@ const NAME_MAP: Record<string, string> = {
   'ml': 'ML',
   'gemini': 'Gemini',
   'google gemini': 'Google Gemini',
+  'faiss': 'FAISS',
+  'sentence-transformers': 'Sentence Transformers',
+  'sentence transformers': 'Sentence Transformers',
+  'sentence_transformers': 'Sentence Transformers',
+  'rag': 'RAG',
 };
 
 const toTitle = (s: string) =>
